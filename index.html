@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TANDANG SANGAR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif'],
+              mono: ['Courier New', 'Courier', 'monospace'],
+            },
+            colors: {
+              'raw-black': '#1a1a1a',
+              'raw-paper': '#f0f0f0',
+              'high-yellow': '#ccff00',
+            },
+            spacing: {
+              '128': '32rem',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for that raw feel */
+      ::-webkit-scrollbar {
+        width: 12px;
+        background: black;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: white;
+        border: 2px solid black;
+      }
+      .marquee-container {
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .marquee-content {
+        display: inline-block;
+        animation: marquee 20s linear infinite;
+      }
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@^2.89.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-raw-paper text-black antialiased">
+    <div id="root"></div>
+  </body>
+</html>

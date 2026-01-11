@@ -44,8 +44,8 @@ const Layout: React.FC = () => {
         <Outlet />
       </main>
 
-      {/* Massive Footer - Aligned with Main */}
-      <footer className="mx-2 md:mx-4 border-x-2 border-b-2 border-t-2 border-black bg-black text-white overflow-hidden relative" style={{ height: '50vh' }}>
+      {/* Massive Footer - Full Width (No Gap) */}
+      <footer className="w-full border-t-2 border-black bg-black text-white overflow-hidden relative" style={{ height: '50vh' }}>
         <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-8">
           <div className="flex justify-between font-mono text-sm md:text-base border-b border-white/30 pb-4">
              <span>EST. 2024</span>

@@ -11,7 +11,12 @@ const Studio: React.FC = () => {
   const [uploading, setUploading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string>('READY_TO_TRANSMIT');
   
-  // Form State
+  // Auth Form State
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authLoading, setAuthLoading] = useState(false);
+
+  // Content Form State
   const [title, setTitle] = useState('');
   const [slug, setSlug] = useState('');
   const [category, setCategory] = useState('Musik');
@@ -32,9 +37,19 @@ const Studio: React.FC = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  const handleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: 'github' });
-    if (error) alert('Error logging in: ' + error.message);
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthLoading(true);
+    
+    const { error } = await supabase.auth.signInWithPassword({
+      email: authEmail,
+      password: authPassword,
+    });
+
+    if (error) {
+      alert('Error logging in: ' + error.message);
+    }
+    setAuthLoading(false);
   };
 
   const handleLogout = async () => {
@@ -118,12 +133,39 @@ const Studio: React.FC = () => {
             > SECURITY_LEVEL: ULTRA<br/>
             > IDENTIFICATION_REQUIRED
           </p>
-          <button 
-            onClick={handleLogin}
-            className="w-full bg-white text-black font-mono font-bold text-xl py-4 hover:bg-high-yellow transition-colors border-2 border-transparent hover:border-white uppercase"
-          >
-            [ AUTHENTICATE_USER ]
-          </button>
+          
+          <form onSubmit={handleLogin} className="space-y-4 text-left">
+            <div>
+                <label className="block font-mono text-xs uppercase mb-1 text-gray-400">Agent_ID (Email)</label>
+                <input 
+                    type="email" 
+                    value={authEmail}
+                    onChange={(e) => setAuthEmail(e.target.value)}
+                    className="w-full bg-transparent border-2 border-white p-3 font-mono text-white focus:bg-white/10 focus:outline-none focus:border-high-yellow transition-colors"
+                    placeholder="agent@tandang.sangar"
+                    required
+                />
+            </div>
+            <div>
+                <label className="block font-mono text-xs uppercase mb-1 text-gray-400">Passcode</label>
+                <input 
+                    type="password" 
+                    value={authPassword}
+                    onChange={(e) => setAuthPassword(e.target.value)}
+                    className="w-full bg-transparent border-2 border-white p-3 font-mono text-white focus:bg-white/10 focus:outline-none focus:border-high-yellow transition-colors"
+                    placeholder="••••••••"
+                    required
+                />
+            </div>
+
+            <button 
+                type="submit"
+                disabled={authLoading}
+                className="w-full bg-white text-black font-mono font-bold text-xl py-4 hover:bg-high-yellow transition-colors border-2 border-transparent hover:border-white uppercase mt-4 disabled:opacity-50"
+            >
+                {authLoading ? 'AUTHENTICATING...' : '[ ENTER_STUDIO ]'}
+            </button>
+          </form>
         </div>
       </div>
     );

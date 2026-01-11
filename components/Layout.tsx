@@ -18,8 +18,8 @@ const Layout: React.FC = () => {
         
         <div className="flex-1 marquee-container flex items-center overflow-hidden h-full">
             <div className="marquee-content font-sans text-2xl font-bold tracking-tighter uppercase whitespace-nowrap">
-              TANDANG SANGAR /// EXPERIMENTAL MEDIA /// JAKARTA - BANDUNG - WORLDWIDE /// RAW AESTHETICS /// TANDANG SANGAR /// LISTEN TO THE NOISE /// 
-              TANDANG SANGAR /// EXPERIMENTAL MEDIA /// JAKARTA - BANDUNG - WORLDWIDE /// RAW AESTHETICS /// TANDANG SANGAR /// LISTEN TO THE NOISE ///
+              TANDANG SANGAR /// EXPERIMENTAL MEDIA /// SOLO - JOGJA - WORLDWIDE /// RAW AESTHETICS /// TANDANG SANGAR /// LISTEN TO THE NOISE /// 
+              TANDANG SANGAR /// EXPERIMENTAL MEDIA /// SOLO - JOGJA - WORLDWIDE /// RAW AESTHETICS /// TANDANG SANGAR /// LISTEN TO THE NOISE ///
             </div>
         </div>
 
